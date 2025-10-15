@@ -83,7 +83,7 @@ trait HasMassModelEvents
      * @throws InvalidParameterException
      * @return int
      */
-    public static function destroy($ids): int
+    public static function remove($ids): int
     {
         $arrayable = static::checkArrayable($ids);
 
@@ -148,5 +148,25 @@ trait HasMassModelEvents
         }
 
         return $instance::query()->where($key, $ids)->update($attributes, $options);
+    }
+
+    public static function massUpdating($callback)
+    {
+        static::registerModelEvent('massUpdating', $callback);
+    }
+
+    public static function massUpdated($callback)
+    {
+        static::registerModelEvent('massUpdated', $callback);
+    }
+
+    public static function massDeleting($callback)
+    {
+        static::registerModelEvent('massDeleting', $callback);
+    }
+
+    public static function massDeleted($callback)
+    {
+        static::registerModelEvent('massDeleted', $callback);
     }
 }

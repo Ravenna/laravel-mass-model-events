@@ -19,7 +19,7 @@ class EloquentMassDeleteTest extends TestCase
         $models = User::all();
         $delete = $models->take(2);
 
-        User::destroy($delete);
+        User::remove($delete);
 
         Event::assertDispatched('eloquent.massDeleting: ' . User::class);
         Event::assertDispatched('eloquent.massDeleted: ' . User::class);
@@ -51,7 +51,7 @@ class EloquentMassDeleteTest extends TestCase
         $models = User::all();
         $delete = $models->take(2);
 
-        User::destroy($delete);
+        User::remove($delete);
 
         $this->assertCount(1, User::all());
         $this->assertTrue($observer->massDeletingCalled);
@@ -82,7 +82,7 @@ class EloquentMassDeleteTest extends TestCase
         $models = User::all();
         $delete = $models->take(2);
 
-        User::destroy($delete);
+        User::remove($delete);
 
         // Verify massDeleting received the models
         $this->assertNotNull($observer->deletingModels);

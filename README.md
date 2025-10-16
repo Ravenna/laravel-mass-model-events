@@ -1,5 +1,4 @@
 # Mass Model Events for Laravel
-___
 
 This package is meant to provide additional model events for updating and deleting multiple model instances at a time with convenience.
 
@@ -95,12 +94,10 @@ User::remove($models);
 ```
 
 ## Good to Know
-___
 
 1. The `patch` and `remove` methods will not fire individual model events like `updating`, `updated`, `deleting`, or `deleted` since these methods have dedicated models events for them
 2. The `remove` method does not support soft deletes at the moment
 
 ## Contributions and Bug Reports
-___
 
 If there are any issues or bugs, please open an issue or pull request.
